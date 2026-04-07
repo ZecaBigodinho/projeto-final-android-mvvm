@@ -1,23 +1,58 @@
-# Projeto Final - Desenvolvimento Android Moderno com Kotlin
+# 👾 MEU_BACKLOG.exe | Game Tracker
+**Projeto Final - Desenvolvimento Android Moderno com Kotlin**
 
-## Informações do Aluno
+![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=android&logoColor=white)
+![Room Database](https://img.shields.io/badge/Room_Database-00599C?style=for-the-badge&logo=sqlite&logoColor=white)
+
+---
+
+## 👤 Informações do Aluno
 * **Nome do Aluno:** Pedro Paulo
-* **Matrícula:** [INSERIR SUA MATRÍCULA AQUI]
-* **Data de Entrega:** [INSERIR A DATA AQUI]
+* **Data de Entrega:** Abril de 2026
 
-## Sobre o Projeto
-Este aplicativo foi desenvolvido como requisito final para o módulo de desenvolvimento Android. Trata-se de um **Rastreador de Backlog de Jogos (Game Backlog Tracker)**. 
+---
 
-### Justificativa da Escolha do Tema
-A escolha do tema une a necessidade técnica de um CRUD básico com uma aplicação útil para o dia a dia. Gerenciar títulos para jogar, organizar a biblioteca por plataforma e ter um histórico visual facilita a administração do tempo livre, servindo como uma excelente prova de conceito para armazenamento local e listas reativas.
+## 💻 Sobre o Projeto
+Este aplicativo foi desenvolvido como requisito final para o módulo de desenvolvimento Android. Trata-se de um **Rastreador de Backlog de Jogos**, um sistema robusto de catalogação pessoal construído 100% com o ecossistema Android moderno.
 
-### Descrição do Funcionamento do Aplicativo
-O aplicativo conta com duas telas principais interligadas pelo Jetpack Navigation Compose:
-1. **Tela Inicial (Game List):** Apresenta uma lista reativa (`LazyColumn`) de todos os jogos cadastrados lidos do banco de dados Room. Possui um botão flutuante (FAB) que dispara a navegação.
-2. **Tela de Cadastro (Add Game):** Um formulário simples onde o usuário insere o "Título" e a "Plataforma" do jogo. Ao clicar em salvar, a camada ViewModel é acionada, os dados são persistidos via Room de forma assíncrona usando Coroutines, e a tela retorna automaticamente à lista inicial, que se atualiza dinamicamente usando `StateFlow`.
+### 🎯 Justificativa da Escolha do Tema
+A escolha do tema une a necessidade técnica de implementar um CRUD completo com uma aplicação de alto valor prático. Ter lidado ativamente com a organização, manutenção e venda de centenas de mídias físicas e consoles cria uma percepção clara da importância de um catálogo bem estruturado. O aplicativo digitaliza essa necessidade, permitindo gerenciar títulos, organizar a biblioteca por plataforma e manter um registro visual do que precisa ser jogado, servindo como uma excelente prova de conceito para armazenamento local e listas reativas.
 
-### Requisitos Técnicos Implementados
-* **Interface:** Construída inteiramente utilizando **Jetpack Compose** e componentes do Material Design 3.
-* **Navegação:** Implementada com `androidx.navigation:navigation-compose`.
-* **Persistência:** Feita com **Room Database**, contendo a entidade `Game` e o DAO correspondente.
-* **Arquitetura:** Padrão **MVVM** seguido rigorosamente. Os dados transitam do Banco (Room) para o Repositório, que alimenta o `GameViewModel`, expondo estados reativos (`StateFlow`) para a UI (Compose).
+---
+
+## ⚙️ Descrição do Funcionamento e Features
+
+O aplicativo foi projetado com uma estética imersiva (Dark/Cyberpunk) e conta com um fluxo de navegação fluido utilizando **Jetpack Navigation Compose**:
+
+* **[ 01 ] Tela Inicial (HUB):** Apresenta uma lista reativa (`LazyColumn`) de todos os jogos cadastrados, lidos em tempo real do banco de dados Room. Cada card exibe a arte do jogo, título e plataforma, além de atalhos rápidos para edição e exclusão.
+* **[ 02 ] Módulo de Cadastro/Edição:** Um formulário dinâmico que reaproveita a mesma tela para inserir novos dados ou dar *override* (editar) em registros existentes. 
+* **[ 03 ] Anexo de Mídia:** Integração com a galeria nativa do dispositivo via `ActivityResultContracts`, permitindo anexar imagens reais (capas) aos registros usando a biblioteca **Coil**.
+
+---
+
+## 🛠️ Requisitos Técnicos Implementados
+
+O projeto atende e expande os requisitos obrigatórios da avaliação:
+
+| Camada | Tecnologia Utilizada | Descrição |
+| :--- | :--- | :--- |
+| **Interface (UI)** | `Jetpack Compose` | UI 100% declarativa, utilizando o Material Design 3 customizado com uma paleta de cores temática (Neon/Dark). |
+| **Navegação** | `Navigation Compose` | Roteamento seguro com passagem de argumentos (IDs e Strings) entre as telas. |
+| **Persistência** | `Room Database` | Banco de dados local contendo a entidade `Game`, utilizando Coroutines para operações assíncronas de Insert, Update e Delete. |
+| **Arquitetura** | `MVVM` | Separação rigorosa de responsabilidades. Os dados transitam do Banco para o Repositório, que alimenta o `GameViewModel`, expondo estados via `StateFlow`. |
+| **Imagens** | `Coil` | Carregamento e cache de imagens assíncrono diretamente das URIs da galeria do aparelho. |
+
+---
+
+## 🚀 Como Executar o Projeto
+
+Este projeto foi estruturado utilizando Kotlin DSL (`build.gradle.kts`). Para compilar e testar via linha de comando (sem a necessidade do Android Studio pesado):
+
+1. Clone este repositório.
+2. Abra a pasta raiz em seu terminal ou VS Code.
+3. Conecte um emulador ou dispositivo físico via Depuração USB.
+4. Execute o comando de compilação e instalação:
+   ```bash
+   .\gradlew.bat installDebug
